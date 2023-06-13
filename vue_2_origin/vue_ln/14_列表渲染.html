@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>列表渲染</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 数组遍历， 在控制台直接通过数组下标进行赋值，导致数组渲染失败
+            使用七个数组方法或是 直接改变数组引用 才能进行数组渲染
+        元素身份标识： 一般用id（唯一且固定），不用数组下标（会变化，需要重新渲染，性能下降），
+    -->
+      <!-- <div v-for="(item, index) of list">{{item}} --- {{index}}</div> -->
+
+      <!-- 数组内对象进行遍历 , template标签不会显示在页面上 -->
+      <template v-for="(item,  index) of list" ：key="item.id">
+        <div>{{item.text}} --- {{index}} --- {{item.id}}</div>
+        <h1>{{item.id}}</h1>
+      </template>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        // data: {
+        //   list: ["a", "b", "c"],
+        // },
+
+        // 对数组内对象进行遍历
+        data: {
+          list: [
+            {
+              id: "0001",
+              text: "Hello",
+            },
+            {
+              id: "0002",
+              text: "韩绝",
+            },
+            {
+              id: "0003",
+              text: "孟浩",
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

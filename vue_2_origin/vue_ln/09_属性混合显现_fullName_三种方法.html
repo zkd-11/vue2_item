@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fullName显示</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!--1.  computed方法 -->
+      <!-- <h2>{{fullName}}</h2>
+      <h2>{{age}}</h2> -->
+
+      <!-- 2. methods 方法， 每次渲染都需执行一次 -->
+      <!-- <h2>{{fullName()}}</h2>
+      <h2>{{age}}</h2> -->
+
+      <!-- 第三种 自定义监听， 代码较为复杂， 性能也提升类同 computed -->
+      <h2>{{fullName}}</h2>
+      <h2>{{age}}</h2>
+    </div>
+
+    <script>
+      /*  computed 和 methods 实例代码一致 */
+      //   var vm = new Vue({
+      //     el: "#app",
+      //     data: {
+      //       firstName: "Dell",
+      //       lastName: "Lee",
+      //       age: "20",
+      //     },
+
+      /*  第二种 methods方法实现 */
+      // methods: {
+      //   fullName: function () {
+      //     console.log("计算一次");
+      //     return this.firstName + " " + this.lastName;
+      //   },
+      // },
+
+      /* 第一种 computed 方法复合属性， 缓存机制 */
+      // 都可以实现的复合情况下使用 computed, 有缓存机制，代码更简洁， 性能更高
+      // computed: {
+      //   fullName: function () {
+      //     console.log("计算了一次");
+      //     return this.firstName + " " + this.lastName;
+      //   },
+      // },
+      //   });
+
+      /* 第三种 事件监听 */
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          firstName: "Dell",
+          lastName: "Lee",
+          fullName: "Dell Lee",
+          age: "20",
+        },
+        watch: {
+          firstName: function () {
+            console.log("计算一次");
+            this.fullName = this.firstName + " " + this.lastName;
+          },
+          lastName: function () {
+            console.log("计算一次");
+            this.fullName = this.firstName + " " + this.lastName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

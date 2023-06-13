@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>computed_set_get函数</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h2>{{fullName}}</h2>
+      <h2>{{age}}</h2>
+    </div>
+
+    <script>
+      /*  computed 和 methods 实例代码一致 */
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          firstName: "Dell",
+          lastName: "Lee",
+          age: "20",
+        },
+        /* 第一种 computed 方法复合属性， 缓存机制 */
+        // 都可以实现的复合情况下使用 computed, 有缓存机制，代码更简洁， 性能更高
+        computed: {
+          fullName: {
+            get: function () {
+              return this.firstName + " " + this.lastName;
+            },
+            set: function (value) {
+              const arr = value.split(" ");
+              this.firstName = arr[0];
+              this.lastName = arr[1];
+            },
+          },
+        },
+      });
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue生命周期钩子</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <test-item :test="test"></test-item>
+    </div>
+
+    <script>
+      var TestItem = {
+        props: ["test"],
+        template: "<h1>{{test}}</h1>",
+      };
+      var app = new Vue({
+        el: "#app",
+        // 有template 表示会将挂载的内容进行覆盖
+        components: {
+          TestItem: TestItem,
+        },
+        data: {
+          test: "Hello",
+        },
+        // vue未实例化前
+        beforeCreate: function () {
+          console.log("bfc");
+        },
+        // vue实例化后
+        created: function () {
+          console.log("created");
+        },
+        // 数据挂载前
+        beforeMount: function () {
+          console.log(this.$el);
+          console.log("beforeMount");
+        },
+        // 数据挂载后
+        mounted: function () {
+          console.log(this.$el);
+          console.log("Mount");
+        },
+        // 销毁前， 可以取消事件绑定
+        beforeDestroy: function () {
+          console.log("销毁前");
+        },
+        destroyed: function () {
+          console.log("销毁后");
+        },
+        updated: function () {
+          console.log("更新后");
+        },
+        beforeUpdate: function () {
+          console.log("更新前");
+        },
+      });
+    </script>
+  </body>
+</html>

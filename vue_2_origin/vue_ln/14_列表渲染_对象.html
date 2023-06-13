@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>列表渲染- 渲染对象</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 遍历数组内对象， 值 - 名 - 下标 -->
+      <template v-for="(item, key, index) of userInfor">
+        <div>{{item}} --- {{key}} --- {{index}}</div>
+      </template>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          userInfor: {
+            name: "dell",
+            age: 20,
+            gender: "male",
+            salary: "secret",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

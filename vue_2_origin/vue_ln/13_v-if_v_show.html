@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>show和if的区别</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <!-- <div id="app">
+      <div v-if="show" data-test="v-if">{{message}}</div>
+      <div v-else>两者成对上下文存在,Byworld</div>
+      <div v-show="show" data-test="v-show">{{message}}</div>
+    </div> -->
+
+    <!-- if else必须上下文 可嵌套使用 -->
+    <div id="app">
+      <!-- 如果a不加引号 则可能会被认为是变量，可能引起结果出错 -->
+      <!-- <div v-if=" show === 'a'">这是a</div>
+      <div v-else-if="show === 'b' ">b</div>
+      <div v-else>其他内容</div>
+    </div> -->
+
+    <!-- 复用， 如果邮箱名不加入key值， vue种会检测是否有可复用元素，进行复用 -->
+      <div v-if="show">
+        用户名：<input type="text" key="user"></div>
+      <div v-else>
+        邮箱名: <input type="text" key="password" ></div>
+      </div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show: false,
+          message: "hello",
+        },
+      });
+    </script>
+  </body>
+</html>

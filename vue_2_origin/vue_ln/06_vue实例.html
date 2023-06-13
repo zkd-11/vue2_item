@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue实例</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div @click="clickItem">{{ message }}</div>
+      <do-item @test="test"></do-item>
+    </div>
+    <script>
+      Vue.component("DoItem", {
+        template: `<h1 @click = A >helloItem </h1>`,
+        methods: {
+          A() {
+            this.$emit("test");
+          },
+        },
+      });
+      var app = new Vue({
+        el: "#root",
+        data: {
+          message: "Hello",
+        },
+        methods: {
+          clickItem() {
+            alert("HelloClick");
+          },
+          test() {
+            console.log("子组件反馈父组件");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue样式绑定</title>
+
+    <script src="../vue.js"></script>
+    <style>
+      .activated {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 第一种， 将类名绑定函数 由activated决定是否显示 -->
+    <!--     
+    <div id="app">
+      <div @click="handleDivClick" :class="{activated:isActivated}">
+        hello world!
+      </div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          isActivated: false,
+        },
+        methods: {
+          handleDivClick: function () {
+            this.isActivated = this.isActivated === false ? true : false;
+          },
+        },
+      });
+     </script>
+     -->
+
+    <!-----------------------分割-----------------------------  -->
+    <!-- 第二种类似，将类名变为空或者变为所要变化的样式 -->
+   
+    <div id="app">
+      <!-- 单个类名 直接插入法 -->
+      <!-- <div @click="handleDivClick" :class="activated">hello world!</div> -->
+
+      <!-- 可以使用数组的形式， 设定默认类名， 一个初始为空 -->
+      <div @click="handleDivClick" :class="[activated, activatedOne]">
+        hello world!
+      </div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        // data: {
+        //   activated: "",
+        // },
+        data: {
+          activated: "",
+          activatedOne: "activated-one",
+        },
+        methods: {
+          handleDivClick: function () {
+            this.activated = this.activated === "" ? "activated" : "";
+          },
+        },
+      });
+    </script>
+
+    
+  </body>
+</html>
