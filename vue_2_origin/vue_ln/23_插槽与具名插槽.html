@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>插槽与具名插槽</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 不使用插槽 -->
+      <!-- <child content="<p>Dell</p>"></child> -->
+
+      <!-- 使用插槽 -->
+      <child>
+        <div slot="header">header</div>
+        <h1>这是默认插槽,放入未命名slot标签</h1>
+        <h2>这也是默认插槽, 放入未命名slot标签</h1>
+        <div slot="footer">footer</div>
+      </child>
+    </div>
+    <script>
+      // 不使用插槽， 需要用到v-html形式
+      //   Vue.component("child", {
+      //     props: ["content"],
+      //     template: "<div v-html=this.content></div>",
+      //   });
+
+      // 使用插槽
+      Vue.component("child", {
+        template: `<div>
+                    <slot></slot>
+                    <slot name='header'> </slot>
+                    <div> middle </div>
+                    <slot name='header'> </slot>
+                    <slot name='eader'> default</slot>
+                    <slot></slot>
+                    </div>`,
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>父子组件传值</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 父组件进行监听 子组件触发change -->
+      <counter :count="2" @change="handleChange"> </counter>
+      <counter :count="3" @change="handleChange"> </counter>
+      <div>{{total}}</div>
+    </div>
+  </body>
+  <script>
+    // 这里使用了 重新定义 number来对父组件传的数值进行接受，不对原数据进行修改
+    Vue.component("counter", {
+      props: ["count"],
+      data: function () {
+        return {
+          number: this.count,
+        };
+      },
+      template: "<div @click='handleClick'>{{number}}</div> ",
+      methods: {
+        handleClick: function () {
+          this.number += 2;
+          this.$emit("change", 2);
+        },
+      },
+    });
+    var vm = new Vue({
+      el: ".app",
+      data: {
+        total: 5,
+      },
+      methods: {
+        handleChange: function (step) {
+          this.total += step;
+        },
+      },
+    });
+  </script>
+</html>

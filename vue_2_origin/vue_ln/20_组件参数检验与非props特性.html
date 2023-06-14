@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+    <title>组件参数校验与非props特性</title>
+  </head>
+  <body>
+    <div id="root"><child content="hell" color="white"></child></div>
+    <script>
+      Vue.component("child", {
+        // 组件参数校验
+        props: {
+          // 数组类型
+          //   content: [Number, String],
+          //   对象类型
+          content: {
+            type: String,
+            // true时父组件必须传值，
+            required: false,
+            // 未进行传值默认值
+            default: "default value",
+            // 校验 
+            validator: function (value) {
+              return value.length > 3;
+            },
+          },
+        },
+
+        template: "<div> {{content}} </div>",
+      });
+
+      var vm = new Vue({
+        el: "#root",
+      });
+    </script>
+  </body>
+</html>
