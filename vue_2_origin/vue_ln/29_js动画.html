@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js实现动画和velocity</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../animate.css" />
+    <script src="../Velocity.js"></script>
+  </head>
+
+  <style></style>
+  <body>
+    <h1 class="animate__animated animate__rotateOut">11</h1>
+    <!-- duration 自定义动画时长
+        需要自定义appear属性需要提前定义 -->
+    <div id="app">
+      <transition
+        name="fade"
+        @before-enter="handleBeforeEnter"
+        @enter="handleEnter"
+        @after-enter="handleAfterEnter"
+        @before-leave="handleBeforeLeave"
+        @leave="handleLeave"
+        @after-leave="handleAfterLeave"
+      >
+        <div v-if="show">hello world</div>
+      </transition>
+      <button @click="handleClick">切换</button>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show: true,
+        },
+        methods: {
+          handleClick: function () {
+            this.show = !this.show;
+          },
+          // 接收过渡标签内部标签
+          // handleBeforeEnter: function (el) {
+          //   el.style.color = "red";
+          // },
+          // handleEnter: function (el, done) {
+          //   setTimeout(() => {
+          //     el.style.color = "green";
+          //   }, 2000);
+          //   setTimeout(() => {
+          //     // 结束过渡动画, 此状态grenn结束时间
+          //     done();
+          //   }, 3000);
+          // },
+          // handleAfterEnter: function (el) {
+          //   el.style.color = "black";
+          // },
+
+          handleBeforeEnter: function (el) {
+            el.style.opacity = 0;
+          },
+          handleEnter: function (el, done) {
+            Velocity(
+              el,
+              {
+                opacity: 1,
+              },
+              {
+                duration: 1000,
+                complete: done,
+              }
+            );
+          },
+          handleAfterEnter: function (el) {
+            alert("动画结束");
+          },
+          handleBeforeLeave: function (el) {
+            el.style.opacity = 1;
+          },
+          handleLeave: function (el, done) {
+            Velocity(
+              el,
+              {
+                opacity: 0,
+              },
+              {
+                duration: 1000,
+                complete: done,
+              }
+            );
+          },
+          handleAfterLeave: function (el) {
+            alert("离开动画结束");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

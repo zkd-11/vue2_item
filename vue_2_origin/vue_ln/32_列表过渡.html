@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue列表过渡</title>
+    <script src="../vue.js"></script>
+    <style>
+      .v-enter,
+      .v-leave-to {
+        opacity: 0;
+      }
+      .v-enter-active,
+      v-leave-active {
+        transition: 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 标识为 列表过渡标签 -->
+      <transition-group>
+        <div v-for="item of list" :key="item.id">{{item.title}}</div>
+      </transition-group>
+      <button @click="handleClick">添加列表</button>
+    </div>
+
+    <script>
+      var count = 0;
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          list: [],
+        },
+        methods: {
+          handleClick: function () {
+            this.list.push({
+              id: count++,
+              title: "韩绝重重",
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

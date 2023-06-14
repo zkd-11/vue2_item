@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>animated</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../animate.css" />
+
+    <!-- <style>
+      @keyframes bounce-in {
+        0% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.5);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style> -->
+
+    <style>
+      .warp {
+        margin-left: 50%;
+      }
+    </style>
+  </head>
+  1
+  <body>
+    <div class="warp">
+      <h1 class="animate__animated animate__bounce">An animated element</h1>
+      <div id="app">
+        <!-- <transition
+        name="fade"
+        enter-active-class="active"
+        leave-active-class="leave"d
+      > -->
+
+        <transition
+          name="fade"
+          enter-active-class="animate__animated animate__backInLeft"
+          leave-active-class="animate__animated animate__rotateOut"
+        >
+          <div v-if="show">hello world</div>
+        </transition>
+        <button @click="handleClick">切换</button>
+      </div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show: true,
+        },
+        methods: {
+          handleClick: function () {
+            this.show = !this.show;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

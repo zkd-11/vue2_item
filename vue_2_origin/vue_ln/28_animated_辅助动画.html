@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>animated</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../animate.css" />
+  </head>
+
+  <style>
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+    }
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 1s;
+    }
+  </style>
+  <body>
+    <h1 class="animate__animated animate__rotateOut">11</h1>
+    <!-- duration 自定义动画时长
+        需要自定义appear属性需要提前定义 -->
+    <div id="app">
+      <transition
+        name="fade"
+        :duration="{enter: 5000, leave:1000}"
+        appear
+        enter-active-class="animate__animated animate__backInLeft fade-enter-active"
+        leave-active-class="animate__animated animate__rotateOut fade-leave-active"
+        appear-active-class="animate__animated animate__backOutDown"
+      >
+        <div v-if="show">hello world</div>
+      </transition>
+      <button @click="handleClick">切换</button>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show: true,
+        },
+        methods: {
+          handleClick: function () {
+            this.show = !this.show;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作用域插槽</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <child>
+        <!-- 此标签接收子组件的属性 props存放子组件信息-->
+        <template v-slot="props">
+          <h1>{{props.item}}</h1>
+        </template>
+      </child>
+    </div>
+
+    <script>
+      Vue.component("child", {
+        data: function () {
+          return {
+            list: [1, 2, 3],
+          };
+        },
+        //           <slot v-for="item of list" :item= item> </slot>, 由父组件传递slot标签内容
+        template: `<div>
+                    <ul>
+                        <slot v-for="item of list" :item= item> </slot>
+                    </ul>
+                </div>`,
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>
