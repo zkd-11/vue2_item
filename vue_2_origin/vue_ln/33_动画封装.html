@@ -25,8 +25,8 @@
       Vue.component("fade", {
         props: ["show"],
         template: `
-            <transition @before-enter="handleBeforeEnter">
-                @enter='handleEnter'
+            <transition @before-enter="handleBeforeEnter" 
+            @enter='handleEnter'>
                 <slot v-if='show'></slot>
             </transition>
         `,
@@ -35,6 +35,7 @@
             el.style.color = "red";
           },
           handleEnter: function (el, done) {
+            console.log("1");
             setTimeout(() => {
               el.style.color = "aqua";
               done();
@@ -54,6 +55,7 @@
           },
         },
       });
+          
     </script>
   </body>
 </html>
