@@ -3,9 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 提高点击效果
+import FastClick from 'fastclick'
+import './assets/styles/reset.css'
+import './assets/styles/border.css'
 
 Vue.config.productionTip = false
-
+// fastClick.attach(document.body)
+document.addEventListener('DOMContentLoaded', function () {
+  FastClick.attach(document.body)
+}, false)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

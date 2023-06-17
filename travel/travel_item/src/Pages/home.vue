@@ -1,14 +1,16 @@
 <template>
-    <!-- 这是单文件组件 -->
-    <h1>这是home</h1>
-  </template>
-  
-  <script>
-  export default {
-    name: "Home",
-
+<div>
+    <home-header>Home</home-header>
+</div>
+</template>
+<script>
+import HomeHeader from './components/header'
+export default {
+  name: 'Home',
+  components: {
+    HomeHeader
   }
-  </script>
-  
-  <style></style>
-  
+}
+</script>
+<style >
+</style>

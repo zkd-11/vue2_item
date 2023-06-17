@@ -2,3 +2,9 @@
 /config/
 /dist/
 /*.js
+
+// eslint-disable-next-line indent
+
+  ✘  http://eslint.org/docs/rules/indent                   Expected indentation of 0 spaces but found 2               
+  src\Pages\home.vue:13:1
+    </script>
