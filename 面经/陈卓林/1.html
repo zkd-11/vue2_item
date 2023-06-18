@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // Promise.resolve().then(() => {
+      //     console.log('p1')
+      //     let t1 = setTimeout(() => {
+      //         console.log('t1')
+      //     }, 0)
+      // })
+      // let t2 = setTimeout(() => {
+      //     Promise.resolve().then(() => {
+      //         console.log('p2')
+      //     })
+      //     console.log('t2')
+      // }, 0)
+      // console.log('start')
+      // //'start'   p1   t2  t1 p2
+      // let n = 10
+      // function test() {
+      //     let n = 20
+      //     let fn = function () {
+      //         console.log(n++)  //21
+      //         return;
+      //     }
+      //     fn()
+      //     return fn  // undefined
+      // }
+      // let fn = test()
+      // fn()  // 21
+      // fn()  //22
+      // console.log(n) //10
+
+      //使用递归把1加到100
+
+      // function sum(a) {
+      //     if (a < 1) {
+      //         return 0;
+      //     }
+      //     // debugger;
+      //     let b = a - 1
+      //     return a + sum(b)
+      // }
+      // let s = sum(100)
+      // console.log(s)
+
+      // 我的方法
+      // function sum(n) {
+      //   if (n <= 1) {
+      //     return 1;
+      //   } else {
+      //     return n + sum(n - 1);
+      //   }
+      // }
+
+      // let s = sum(100);
+      // console.log(s);
+
+      // 斐波那契数列
+      // function fibonacci(n) {
+      //   if (n <= 1) {
+      //     return 1;
+      //   } else {
+      //     return fibonacci(n - 1) + fibonacci(n - 2);
+      //   }
+      // }
+      // console.log(fibonacci(10));
+      // for (let i = 0; i < 10; i++) {
+      //   console.log(fibonacci(i));
+      // }
+
+      // var length = 8;
+      // function fn() {
+      //   console.log("this. length" + this.length);
+      // }
+      // // fn();
+      // var obj = {
+      //   length: 5,
+      //   aa: function (arguments) {
+      //     // arguments[0]();
+      //     arguments();
+      //   },
+      // };
+
+      // obj.aa(fn);
+
+      // "use strict";
+      // var foo = 123;
+      // function print() {
+      //   console.log(this);
+      //   console.log(window.foo);
+      //   console.log(this.foo);
+      // }
+      // console.log(this);
+      // print();
+
+      // let a = 1;
+      // const b = 2;
+      // var c = 3;
+      // function print() {
+      //   console.log(this.a);
+      //   console.log(this.b);
+      //   console.log(this.c);
+      // }
+
+      // print();
+      // console.log(this.a);
+
+      // function getPersonInfo(one, two, three) {
+      //   console.log(one, two, three);
+      // }
+      // const person = "Lydia";
+      // const age = 21;
+      // getPersonInfo(`${person}`, `is ${age}`, `years old`);
+
+      // function Person(firstName, lastName) {
+      //   this.firstName = firstName;
+      //   this.lastName = lastName;
+      // }
+      // Person.prototype.getFullName = () => this.firstName + " " + this.lastName; // 箭头函数没有this指向 这样输出结果是undefined undefined
+      // Person.prototype.getFullName = function () {
+      //   return this.firstName + " " + this.lastName;
+      // };
+      // const member = new Person("Lydia", "Hallie");
+      // console.log(member.getFullName());
+    </script>
+  </body>
+</html>

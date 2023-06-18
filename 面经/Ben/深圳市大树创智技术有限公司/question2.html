@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function flattenToNested(dictionary) {
+        const nested = {};
+
+        for (const key in dictionary) {
+          if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+            const parts = key.split(".");
+            let current = nested;
+
+            for (let i = 0; i < parts.length - 1; i++) {
+              const part = parts[i];
+              if (!current[part]) {
+                current[part] = {};
+              }
+              current = current[part];
+            }
+
+            current[parts[parts.length - 1]] = dictionary[key];
+          }
+        }
+
+        return nested;
+      }
+
+      const dictionary = { A: 1, "B.A": 2, "B.B": 3, "CC.D.E": 4, "CC.D.F": 5 };
+
+      const nestedDictionary = flattenToNested(dictionary);
+      console.log(nestedDictionary);
+    </script>
+  </body>
+</html>

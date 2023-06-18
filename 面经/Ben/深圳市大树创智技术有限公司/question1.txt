@@ -1,0 +1,54 @@
+// Author：邱泽楷
+// Phone number：15994978252
+// Editor：Dev-C++（C++11）
+
+【问题】
+Given an array of ints = [6, 4, -3, 5, -2, -1, 0, 1, -9], implement a function to move all positive numbers to the left, and move all negative numbers to the right.Try your best to make its time complexity to O(n), and space complexity to O(1).
+
+【回答】
+给定一个整数数组 [6, 4, -3, 5, -2, -1, 0, 1, -9]，实现一个函数将所有正数移动到数组的左边，将所有负数移动到数组的右边。
+
+为了使时间复杂度为 O(n)，空间复杂度为 O(1)，可以使用双指针的方法来解决这个问题。具体的实现步骤如下：
+
+1.初始化两个指针，left 和 right，分别指向数组的首尾。
+2.循环遍历数组，当 left 小于等于 right 时，执行以下操作：
+  ① 如果 nums[left] 是正数，将 left 指针向右移动一位，继续检查下一个元素。
+  ② 如果 nums[right] 是负数，将 right 指针向左移动一位，继续检查下一个元素。
+  ③ 如果 nums[left] 是负数且 nums[right] 是正数，则交换它们的位置，将 left 指针向右移动一位，将 right 指针向左移动一位。
+3.当循环结束后，所有正数都被移动到了左边，所有负数都被移动到了右边。
+
+下面是解题代码：（注：0被当作负数处理）
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void moveNumbers(vector<int>& nums) {
+    int left = 0;
+    int right = nums.size() - 1;
+
+    while (left <= right) {
+        if (nums[left] > 0) {
+            left++;
+        } else if (nums[right] <= 0) {
+            right--;
+        } else if (nums[left] <= 0 && nums[right] > 0) {
+            swap(nums[left], nums[right]);
+            left++;
+            right--;
+        }
+    }
+}
+
+int main() {
+    vector<int> nums = {6, 4, -3, 5, -2, -1, 0, 1, -9};
+
+    moveNumbers(nums);
+
+    for (int num : nums) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    return 0;
+}

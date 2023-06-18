@@ -1,10 +1,8 @@
 <template>
-<div>
     <home-header>Home</home-header>
-</div>
 </template>
 <script>
-import HomeHeader from './components/header'
+import HomeHeader from './components/Header'
 export default {
   name: 'Home',
   components: {
@@ -12,5 +10,5 @@ export default {
   }
 }
 </script>
-<style >
+<style>
 </style>

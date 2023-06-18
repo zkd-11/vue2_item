@@ -1,0 +1,72 @@
+// Author：邱泽楷
+// Phone number：15994978252
+// Editor：VSCode
+
+【问题】
+Given a “flatten” dictionary object, whose keys are dot-separated.For example, { ‘A’: 1, ‘B.A’: 2, ‘B.B’: 3, ‘CC.D.E’: 4, ‘CC.D.F’:5}.Implement a function to transform it to a “nested” dictionary object.In the above case, the nested version is like:It’s guaranteed that no keys in dictionary are prefixes of other keys.
+
+给定一个“扁平化”（flatten）的字典对象，其中的键是用点号分隔的。例如，{ 'A': 1, 'B.A': 2, 'B.B': 3, 'CC.D.E': 4, 'CC.D.F': 5 }。实现一个函数将其转换为“嵌套”（nested）的字典对象。
+
+在上述示例中，嵌套版本如下所示：
+
+{
+'A': 1,
+'B': {
+'A': 2,
+'B': 3
+},
+'CC': {
+'D': {
+'E': 4,
+'F': 5
+}
+}
+}
+
+可以通过逐个处理扁平化字典的键，将其分解成嵌套的字典结构。
+
+下面是解题代码：
+
+function flattenToNested(dictionary) {
+  const nested = {};
+
+  for (const key in dictionary) {
+    if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+      const parts = key.split(".");
+      let current = nested;
+
+      for (let i = 0; i < parts.length - 1; i++) {
+        const part = parts[i];
+        if (!current[part]) {
+          current[part] = {};
+        }
+        current = current[part];
+      }
+
+      current[parts[parts.length - 1]] = dictionary[key];
+    }
+  }
+
+  return nested;
+}
+
+const dictionary = { A: 1, "B.A": 2, "B.B": 3, "CC.D.E": 4, "CC.D.F": 5 };
+
+const nestedDictionary = flattenToNested(dictionary);
+console.log(nestedDictionary);
+
+使用上述函数对给定的字典进行转换，会得到嵌套的字典对象如下所示：
+{
+  'A': 1,
+  'B': {
+    'A': 2,
+    'B': 3
+  },
+  'CC': {
+    'D': {
+      'E': 4,
+      'F': 5
+    }
+  }
+}
+转换后的字典对象按照原始键的层级结构进行了嵌套，每个点号分隔的部分对应于嵌套字典的一层。
