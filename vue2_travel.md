@@ -433,13 +433,13 @@ webView2 具有以下作用和优势：
 >      <template>
 >        <!-- 模板内容 -->
 >      </template>
->                
+>                     
 >      <script>
 >      export default {
 >        // 组件选项
 >      };
 >      </script>
->                
+>                     
 >      <style scoped>
 >        /* 组件样式 */
 >      </style>
@@ -457,7 +457,7 @@ webView2 具有以下作用和优势：
 >    - 使用单文件组件方式：在父组件中引入并注册子组件：
 >      ```javascript
 >      import MyComponent from './MyComponent.vue';
->                
+>                     
 >      export default {
 >        components: {
 >          MyComponent
@@ -2569,17 +2569,13 @@ node.js 版本对应 npm版本（包管理工具）， 有些依赖包对npm的�
 
 
 
+
+
 ## 两日debug 15-16
-
-<img src="vue2_travel.assets/image-20230617135633930.png" alt="image-20230617135633930" style="zoom:67%;" />
-
-
 
 css检验功能提示： 错误， 原依赖能正常使用
 
-
-
-
+<img src="travel debug.assets/image-20230617135633930.png" alt="image-20230617135633930" style="zoom:67%;" />
 
 
 

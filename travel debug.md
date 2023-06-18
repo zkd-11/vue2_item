@@ -124,5 +124,13 @@ preventDefault()就是指阻止默认行为， 并将默认行为修改， 浏�
 
 
 
+## 
+
+<img src="travel debug.assets/image-20230617135633930.png" alt="image-20230617135633930" style="zoom:67%;" />
+
+
+
+
+
 
 

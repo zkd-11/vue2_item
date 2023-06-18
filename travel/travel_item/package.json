@@ -2,7 +2,7 @@
   "name": "travel_item",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Benn314 <209441806@qq.com>",
+  "author": "wu lv",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
