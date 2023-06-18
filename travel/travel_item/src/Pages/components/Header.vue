@@ -7,13 +7,11 @@
 </template>
 <script>
 export default {
-  name: "HomeHeader"
-};
+  name: 'HomeHeader'
+}
 </script>
 
 <style lang="stylus" scoped>
 .header
    width: 0.68rem
-
-   
 </style>
