@@ -7,11 +7,8 @@
       那么就不显示 直到swiperList传递了数据被真正渲染 才显示 这时显示的就会是第一张图片
       -->
     <swiper :options="swiperOption">
-      <swiper-slide>
-        <img class="swiper-img" src="https://imgs.qunarzz.com/sight/p0/2306/b0/b064c69494a19f0ea3.water.jpg_710x360_136c97a0.jpg">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="swiper-img" src="https://qimgs.qunarzz.com/piao_qsight_provider_piao_qsight_web/0100j1200087e9wb39FE1.jpg_710x360_e3859282.jpg">
+      <swiper-slide v-for="item of swiperList" :key="item.id">
+        <img class="swiper-img" :src="item.imgUrl">
       </swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
       <!-- button-prev和button-next是代表左右箭头 -->
@@ -34,14 +31,14 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      }
-      // swiperList: [{
-      //   id: '0001',
-      //   imgUrl: 'https://imgs.qunarzz.com/sight/p0/2005/39/3979f1867defec4ea3.water.jpg_250x250_e1b08a5e.jpg'
-      // }, {
-      //   id: '0002',
-      //   imgUrl: 'https://imgs.qunarzz.com/sight/p0/1507/cc/19733fc0135062788140cbb48ae606a7.water.jpg_250x250_48713510.jpg'
-      // }]
+      },
+      swiperList: [{
+        id: '0001',
+        imgUrl: 'https://ad-dapp-osscp.qunarzz.com/ad_dapp_oss_oper/54cfc34ad8b0a7553e0dc411a8f807e2.jpg'
+      }, {
+        id: '0002',
+        imgUrl: 'https://ad-dapp-osscp.qunarzz.com/ad_dapp_oss_oper/6f0237182ee000924615f5bc1b5c2d75.jpg'
+      }]
     }
   },
   computed: {
@@ -54,20 +51,19 @@ export default {
 </script>
 
 <style lang="stylus" scoped>  /**指定样式语法 然后他是一个限制范围的样式*/
-//   .wrapper >>> .swiper-pagination-bullet-active
-//     background: #fff
-//     /**.swiper-pagination-bullet-active不起作用 它虽然在swiper-pagination中
-//         但这个组件最终传递的参数是作用在swiper组件中的 再又swiper决定显示什么内容
-//         且.swiper-pagination-bullet-active不再swiper里
-//         有了scoped的限制范围 我们可以用 >>>进行穿透处理
+  .wrapper >>> .swiper-pagination-bullet-active
+    background: aqua
+//  .swiper-pagination-bullet-active不起作用 它虽然在swiper-pagination中
+// 因为swiper-pagination-bullet-active这个类名并不是由当前区域生成，由外界包传入所以生效
+// 有了scoped的限制范围 我们可以用 >>>进行穿透处理
 //         只要在wrapper下的.swiper-pagination-bullet-active 我们就对其发生规定样式的改变
 //     */
     .wrapper
       overflow: hidden
       width: 100%
       height: 0/*这里不能直接在height定义 不然定义的是父级div的宽高比 而不是图片img的宽高比*/
-      padding-bottom: 33%
-      background: #eee
+      padding-bottom: 30.5%//这里是定义图片的外部div块，在图片未加载时就已经被撑开，所以不会出现卡顿，相当于提前给出模块定位
+      background: #ccc
       .swiper-img
         width: 100%
 </style>

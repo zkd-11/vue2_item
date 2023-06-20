@@ -2,7 +2,7 @@
   <div>
     <home-header>Home</home-header>
     <home-swiper></home-swiper>
-    <h1>11</h1>
+    <h1>11111111</h1>
   </div>
 </template>
 <script>
