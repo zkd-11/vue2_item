@@ -272,3 +272,21 @@ Vetur
 > 8. 代码片段生成器：Vetur 还提供了一个代码片段生成器，可以根据用户的配置生成自定义的代码片段，以适应特定项目的需求。
 >
 > 通过安装和启用 Vetur 扩展，您可以在 Visual Studio Code 中获得更好的 Vue.js 开发体验，提高开发效率并减少常 见的错误。
+
+
+
+### 运行内存过高
+
+![image-20230620115425434](travel debug.assets/image-20230620115425434.png)
+
+可能跟memory compression 有关系
+
+power Shell 进入管理员权限
+
+Disable-MMAgent -mc 禁用 内存压缩
+
+Get-mmagent  查看状态
+
+Enable-MMAgent -mc - 使用 内存压缩
+
+谷歌浏览器- 使用休眠标签插件  
