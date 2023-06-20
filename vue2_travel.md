@@ -433,13 +433,13 @@ webView2 具有以下作用和优势：
 >      <template>
 >        <!-- 模板内容 -->
 >      </template>
->                     
+>                          
 >      <script>
 >      export default {
 >        // 组件选项
 >      };
 >      </script>
->                     
+>                          
 >      <style scoped>
 >        /* 组件样式 */
 >      </style>
@@ -457,7 +457,7 @@ webView2 具有以下作用和优势：
 >    - 使用单文件组件方式：在父组件中引入并注册子组件：
 >      ```javascript
 >      import MyComponent from './MyComponent.vue';
->                     
+>                          
 >      export default {
 >        components: {
 >          MyComponent
@@ -2662,6 +2662,26 @@ line-hight: 设置块内元素（文本框（包裹文本））的高度， 并�
 >```
 >
 >通过使用 `alias` 别名，您可以更简洁地引用模块，提高代码的可读性和可维护性。
+
+
+
+### 将搜索node-moudle 的排除去除
+
+![image-20230620110935258](vue2_travel.assets/image-20230620110935258.png)
+
+**"search.exclude": {    "**/node_modules": false   }
+
+
+
+# 6.21  凌晨2：30
+
+## 图片使用轮播图插件
+
+图片使用轮播图插件时（放入容器时为等比例缩放，不影响照片）： 原图片大小为946 ^ 285时， 放到容器宽度为375时， 通过计算原宽高比是30.5%， 所以在设置样式时， 将width: 100%, padding-bottom: 30.5%, 因为padding-bottom是相对于宽度所生成的，由宽度自动撑开
+
+
+
+flow: hidden  表示将溢出的图片部分进行剪切，在轮播图实现中，由于轮播图底部为 所在图片 点排列 显示图，比例计算错， 导致隐藏时， 将该组件也一并隐藏
 
 
 
