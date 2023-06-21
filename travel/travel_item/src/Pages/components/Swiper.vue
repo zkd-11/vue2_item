@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/valid-v-for -->
 <template>
   <div class="wrapper">
     <!--
