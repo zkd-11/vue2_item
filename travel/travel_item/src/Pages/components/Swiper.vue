@@ -5,8 +5,8 @@
       那么如何解决这一问题呢 我们只要在 swiper组件中添加v-if 如果swiper一开始未被真正创建
       那么就不显示 直到swiperList传递了数据被真正渲染 才显示 这时显示的就会是第一张图片
       -->
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+    <swiper :options="swiperOption" v-if="showSwiper">
+      <swiper-slide v-for="item of list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl">
       </swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
@@ -22,6 +22,7 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  // 从父组件接受Array
   props: {
     list: Array
   },
@@ -30,14 +31,14 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      swiperList: [{
-        id: '0001',
-        imgUrl: 'https://ad-dapp-osscp.qunarzz.com/ad_dapp_oss_oper/54cfc34ad8b0a7553e0dc411a8f807e2.jpg'
-      }, {
-        id: '0002',
-        imgUrl: 'https://ad-dapp-osscp.qunarzz.com/ad_dapp_oss_oper/6f0237182ee000924615f5bc1b5c2d75.jpg'
-      }]
+      }
+      // swiperList: [{
+      //   id: '0001',
+      //   imgUrl: 'https://ad-dapp-osscp.qunarzz.com/ad_dapp_oss_oper/54cfc34ad8b0a7553e0dc411a8f807e2.jpg'
+      // }, {
+      //   id: '0002',
+      //   imgUrl: 'https://ad-dapp-osscp.qunarzz.com/ad_dapp_oss_oper/6f0237182ee000924615f5bc1b5c2d75.jpg'
+      // }]
     }
   },
   computed: {
