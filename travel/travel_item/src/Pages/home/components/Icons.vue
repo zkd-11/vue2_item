@@ -22,7 +22,7 @@ export default {
     return {
       swiperOption: {
         autoplay: false,
-        loop: true
+        loop: false
       }
     }
   },

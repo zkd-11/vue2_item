@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'HomeSwiper',
-  // 从父组件接受Array
+  // 从父组件接收Array
   props: {
     list: Array
   },
