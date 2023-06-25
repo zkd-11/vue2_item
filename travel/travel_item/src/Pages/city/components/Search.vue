@@ -1,19 +1,79 @@
 <template>
-  <div class="search">
-    <input type="text" class="search-input"
-      placeholder="输入城市名或拼音"
-    >
-  </div>
+  <div>
+    <div class="search">
+        <input v-model="keyword" type="text" class="search-input"
+          placeholder="输入城市名或拼音"
+        >
+        <div
+          class="search-content"
+          ref="search"
+          v-show="keyword"
+          >
+          <ul>
+            <li v-for="item of list" :key="item.id" class="search-item border-bottom">{{ item.name }}</li>
+            <li v-show="hasNodata" class="search-item border-bottom" >没有找到匹配数据</li>
+          </ul>
+        </div>
+    </div>
+</div>
 </template>
 <script>
+import BScroll from 'better-scroll'
 export default {
-  name: 'CitySearch'
+  name: 'CitySearch',
+  data () {
+    return {
+      keyword: '',
+      list: [],
+      timer: null,
+      hasNodata: false
+    }
+  },
+  props: {
+    cities: Object
+  },
+  watch: {
+    keyword () {
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      if (!this.keyword) {
+        this.list = []
+        return
+      }
+      this.timer = setTimeout(() => {
+        const result = []
+        for (let i in this.cities) {
+          this.cities[i].forEach((value) => {
+            if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
+              result.push(value)
+            }
+            this.list = result
+            // NEXTtICK 异步更新后才显示数据
+            this.$nextTick(() => {
+              this.hasNodata = !this.list.length
+            })
+          }
+          )
+        }
+      }, 100)
+    }
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.search)
+  }
+  // 会出现延迟， 在搜索前，异步数据未更新， 能看到数据找不到的信息
+  // computed: {
+  //   hasNodata () {
+  //     return !this.list.length
+  //   }
+  // }
 }
 </script>
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
   .search
-    height: .73rem
+    height: .72rem
     padding: 0 .15rem
     background: $bgColor
     .search-input
@@ -24,4 +84,18 @@ export default {
       text-align: center
       border-radius: .06rem
       color: #666
+    .search-content
+      z-index: 1
+      overflow: hidden
+      position absolute
+      top: 1.58rem
+      left: 0
+      right: 0
+      bottom: 0
+      background: #eee
+      .search-item
+        line-height: .62rem
+        padding-left: .2rem
+        background: #fff
+        color: #666
 </style>

@@ -53,6 +53,7 @@ export default {
       // console.log(letter)
       // 当接收到子组件传递过来的letter的时候 我让父组件自定义的letter等于子组件传递过来letter
       this.letter = letter
+      console.log(this.letter)
     }
   },
   mounted () {

@@ -84,10 +84,12 @@ export default {
     letter () {
     //   console.log(this.letter)
       if (this.letter) {
+        console.log(this.letter)
         const element = this.$refs[this.letter][0]
-        // console.log(element) // element 是一个数组 我们需要的是一个dom元素/dom选择器
+        console.log(element) // element 是一个数组 我们需要的是一个dom元素/dom选择器
         // 在this.letter后面加一个[0]就是获取数组第一位 也就变成dom元素了
         this.scroll.scrollToElement(element)
+        console.log(element) // element 是一个数组 我们需要的是一个dom元素/dom选择器
       }
     }
   },

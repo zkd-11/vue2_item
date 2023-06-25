@@ -1,7 +1,9 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search></city-search>
+    <city-search
+      :cities="cities"
+    ></city-search>
     <city-list
      :cities="cities"
      :hot="hotCities"
@@ -48,6 +50,7 @@ export default {
     },
     handleLetterChange (letter) {
       this.letter = letter
+      // console.log(this.letter + 'hi')
     }
   },
   // 挂载是定义在方法外

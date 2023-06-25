@@ -38,8 +38,8 @@ import BScroll from 'better-scroll'
 export default {
   name: 'CityList',
   props: {
-    cities: Array,
-    hot: Object,
+    cities: Object,
+    hot: Array,
     letter: String
   },
   // 渲染成功时 实例化对象
@@ -50,13 +50,10 @@ export default {
     letter () {
       if (this.letter) {
         // 在块区域中绑定的为 数组对象，并非指定对象 需加[0]获取
-        this.$nextTick(() => {
-          console.log(this.letter)
-          console.log(this.letter === 'A')
-          console.log(this.$refs[this.letter])
-          this.scroll.scrollToElement(this.$refs['N'][0])
-          console.log(this.letter)
-        })
+        // this.$nextTick(() => {
+        console.log(this.letter)
+        this.scroll.scrollToElement(this.$refs[this.letter][0])
+        // })
       }
     }
   }
