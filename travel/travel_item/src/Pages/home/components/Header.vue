@@ -10,17 +10,24 @@
     </div>
     <router-link to='/city'>
       <div class="header-right">
-        {{ this.city }}
+        <!-- {{ this.city }} -->
+        {{ this.doubleCity }}
+        <!-- {{ this.$store.state.city }} -->
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
   </div>
 </template>
 <script>
+import { mapState, mapGetters } from 'vueX'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  // props: {
+  //   city: String
+  // }
+  computed: {
+    ...mapState(['city']),
+    ...mapGetters(['doubleCity'])
   }
 }
 </script>
@@ -48,7 +55,10 @@ export default {
     border-radius: .1rem
     color: #ccc
   .header-right
-    width: 1.35rem
+  // 因为之前width数据写死了， 导致城市名超过此宽度 会使样式变形
+    // width: 1.35rem
+    min-width 1.05rem
+    padding: 0 .1rem
     float: right
     text-align: center
     color: #fff

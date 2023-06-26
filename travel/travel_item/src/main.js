@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 // 提高点击效果
 import FastClick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -21,6 +22,8 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  // store 会通过根组件进行派发store内容
+  store,
   components: { App },
   template: '<App/>'
 })

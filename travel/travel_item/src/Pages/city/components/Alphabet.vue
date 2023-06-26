@@ -37,6 +37,7 @@ export default {
   },
   updated () {
     // 该组件初始数据为对象，当异步请求获取数据才进行渲染- 无需每次计算提高性能
+    console.log(this.$refs['A'][0])
     this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
