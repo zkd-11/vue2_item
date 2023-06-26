@@ -27,7 +27,7 @@ export default new Vuex.Store({
   //       }
   //     } catch (e) {}
   //   }
-  // }
+  // },
   mutations,
   getters: {
     doubleCity (state) {

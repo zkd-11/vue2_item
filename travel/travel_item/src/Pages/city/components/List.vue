@@ -43,7 +43,7 @@
 </div>
 </template>
 <script>
-import { mapState, mapMutations } from 'vueX'
+import { mapState, mapMutations } from 'vuex'
 import BScroll from 'better-scroll'
 export default {
   name: 'CityList',
@@ -61,6 +61,7 @@ export default {
     handleCityClick (city) {
       // this.$store.commit('changeCity', city)
       this.changeCity(city)
+      console.log('开始进行跳转')
       this.$router.push('/')
     },
     ...mapMutations(['changeCity'])
