@@ -78,7 +78,7 @@ export default {
     }
   },
   // 渲染成功时 实例化对象
-  mounted () {
+  activated () {
     this.scroll = new BScroll(this.$refs.wrapper)
   }
 }

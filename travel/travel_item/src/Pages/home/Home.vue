@@ -64,11 +64,12 @@ export default {
   // 性能优化， 利用activated钩子， 将每次的跳转都进行判断并进行请求
   activated () {
     if (this.lastCity !== this.city) {
-      this.city = this.lastCity
+      this.lastCity = this.city // 将 this.city 的值赋给 this.lastCity
       this.getHomeInfo()
     }
   }
 }
+
 </script>
 <style>
 </style>

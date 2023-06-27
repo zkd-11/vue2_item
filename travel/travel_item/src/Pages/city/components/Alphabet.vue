@@ -1,12 +1,13 @@
 <template>
   <ul class="list" >
+    <!-- .preven阻止默认行为， 使得原先滚动事件取消， 不会跟着字母表上滑 -->
     <li
       class="item"
       v-for="item of letters"
       :key=item
       @click="handleLetterClick"
       @touchstart="handleTouchStart"
-      @touchmove="handleTouchMove"
+      @touchmove.prevent="handleTouchMove"
       @touchend="handleTouchEnd"
       :ref = item
       >
@@ -39,6 +40,7 @@ export default {
     // 该组件初始数据为对象，当异步请求获取数据才进行渲染- 无需每次计算提高性能
     console.log(this.$refs['A'][0])
     this.startY = this.$refs['A'][0].offsetTop
+    console.log(this.startY)
   },
   methods: {
     handleLetterClick (e) {

@@ -12,10 +12,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8080',
-        pathRewrite: {
-          '^/api': '/static/mock'
-        }
+        target: 'http://localhost:80'
+        // pathRewrite: {
+        //   '^/api': '/static/mock'
+        // }
       }
     },
 
@@ -58,6 +58,7 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    // 上行 路径 运行环境 修改 /project 表示在project里运行
 
     /**
      * Source Maps
