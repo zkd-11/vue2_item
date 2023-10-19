@@ -16,6 +16,7 @@ module.exports = {
         // pathRewrite: {
         //   '^/api': '/static/mock'
         // }
+        //测试
       }
     },
 
